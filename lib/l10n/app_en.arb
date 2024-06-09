@@ -1,0 +1,59 @@
+{
+  "all": "All",
+  "loading": "Loading...",
+  "ok": "OK",
+  "yes": "YES",
+  "no": "NO",
+  "and": "and",
+  "or": "or",
+  "alert": "Alert!",
+  "connectToInternet": "Connect to the internet",
+  "checkInternetConnection": "You're offline. Check your connection",
+  "connectionErrorOccurred": "Connection error occurred",
+  "errorOccurred": "An error occurred",
+  "tryAgainLater": "Please try again later",
+  "tryAgain": "Try Again",
+  "cancel": "Cancel",
+  "noCancel": "No, Cancel",
+  "noData": "No data!",
+  "noDataFound": "There is no data at the moment.",
+  "refresh": "Refresh",
+  "skip": "Skip",
+  "start": "Start",
+  "fieldRequired": "{fieldLabel} can't be blank",
+  "@fieldRequired": {
+    "placeholders": {
+      "fieldLabel": {
+        "type": "String?"
+      }
+    }
+  },
+  "sign_in_txt": "Sign in",
+  "forget_password_txt": "Forgot password?",
+  "password": "Password",
+  "email_address": "Email",
+  "welcome_back_txt": "Welcome back!",
+  "inputFieldHint": "Enter your {title}",
+  "@inputFieldHint": {
+    "placeholders": {
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "explore": "Explore",
+  "reservations": "Reservations",
+  "notifications": "Notifications",
+  "profile": "Profile",
+  "invalid_email_txt": "Please enter valid email",
+  "invalid_password_txt": "Please enter valid password",
+  "reviews": "Reviews",
+  "home": "Home",
+  "mainMenu": "Main Menu",
+  "logout": "Logout",
+  "myProfile": "My profile",
+  "changeLanguage": "Change Language",
+  "about": "About",
+  "markAllRead": "Mark all read",
+  "reservationDetails": "Reservation Details"
+}

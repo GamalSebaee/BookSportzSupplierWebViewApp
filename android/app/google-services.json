@@ -1,0 +1,201 @@
+{
+  "project_info": {
+    "project_number": "697999526799",
+    "project_id": "limitless-331021",
+    "storage_bucket": "limitless-331021.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:697999526799:android:96b0ffcb121fe33f7159fa",
+        "android_client_info": {
+          "package_name": "com.app.booksportz"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "697999526799-6n3h2iu68o45gkptb073c9t8pfvi7l2j.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.app.booksportz",
+            "certificate_hash": "6b4f15fd573378c95ff896f92e7963492b1b9f24"
+          }
+        },
+        {
+          "client_id": "697999526799-74s5lrgovjhdce1v4uto6o7s0j8rlpg6.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.app.booksportz",
+            "certificate_hash": "3c04d29688af7357b7b202aa6f62528b42b8f7eb"
+          }
+        },
+        {
+          "client_id": "697999526799-a0qj3ghvje0dtpfl9fh2jvr2k9spj540.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.app.booksportz",
+            "certificate_hash": "7f7b8e722eb5b76b404a514f2cd15f8c65a13333"
+          }
+        },
+        {
+          "client_id": "697999526799-df0g08idiv86kv7hbhjqu7glurc9c9rs.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.app.booksportz",
+            "certificate_hash": "53e9fc7125ac26654b54c890a1561b19380cec93"
+          }
+        },
+        {
+          "client_id": "697999526799-sb8p9gtffq52jgkcaf3g2mitp88mikt4.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.app.booksportz",
+            "certificate_hash": "49f77f4765c302286c2b7a6dbb328798dcc499d2"
+          }
+        },
+        {
+          "client_id": "697999526799-t5b36jnr9coiv7488d2to40800hjpik3.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.app.booksportz",
+            "certificate_hash": "f576ce4193c6e8ba48370ae501c905b46a1d1642"
+          }
+        },
+        {
+          "client_id": "697999526799-o6lslsqfr0ijqojqqigssatjrv6v8es5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDPl1iRmNi_nxlez0JY3VCUbfBqE5uul6M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "697999526799-o6lslsqfr0ijqojqqigssatjrv6v8es5.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "697999526799-5ana30oglgkib432ai9fmf2nfgh22u4h.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.app.limitless",
+                "app_store_id": "1637270498"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:697999526799:android:8d54338e360ad3147159fa",
+        "android_client_info": {
+          "package_name": "com.app.limitless"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "697999526799-3sdi1q27e2eo1dcpict1pmppo429p4uc.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.app.limitless",
+            "certificate_hash": "7f7b8e722eb5b76b404a514f2cd15f8c65a13333"
+          }
+        },
+        {
+          "client_id": "697999526799-4rqm1dlrimpusia2654pc6occltu8569.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.app.limitless",
+            "certificate_hash": "f576ce4193c6e8ba48370ae501c905b46a1d1642"
+          }
+        },
+        {
+          "client_id": "697999526799-53m5m1h2nejdb7qsvfveog6ikeue5bmg.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.app.limitless",
+            "certificate_hash": "53e9fc7125ac26654b54c890a1561b19380cec93"
+          }
+        },
+        {
+          "client_id": "697999526799-srjmdoqalepah1ga2l2u6rrchnev164f.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.app.limitless",
+            "certificate_hash": "6b4f15fd573378c95ff896f92e7963492b1b9f24"
+          }
+        },
+        {
+          "client_id": "697999526799-o6lslsqfr0ijqojqqigssatjrv6v8es5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDPl1iRmNi_nxlez0JY3VCUbfBqE5uul6M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "697999526799-o6lslsqfr0ijqojqqigssatjrv6v8es5.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "697999526799-5ana30oglgkib432ai9fmf2nfgh22u4h.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.app.limitless",
+                "app_store_id": "1637270498"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:697999526799:android:2d9b7b3a9286d0367159fa",
+        "android_client_info": {
+          "package_name": "com.booksportz.supplier"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "697999526799-o6lslsqfr0ijqojqqigssatjrv6v8es5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDPl1iRmNi_nxlez0JY3VCUbfBqE5uul6M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "697999526799-o6lslsqfr0ijqojqqigssatjrv6v8es5.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "697999526799-5ana30oglgkib432ai9fmf2nfgh22u4h.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.app.limitless",
+                "app_store_id": "1637270498"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

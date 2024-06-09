@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#2194ff</color>
+    <color name="colorPrimaryDark">#2194ff</color>
+    <color name="colorAccent">#2194ff</color>
+    <color name="payment_color_style">#2194ff</color>
+    <color name="ThemeColor">#2194ff</color>
+</resources>
