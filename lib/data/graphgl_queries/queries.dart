@@ -49,18 +49,6 @@ class GraphQLQueries {
       }
     }
   ''';
-  static String getNotificationsCount({
-    int? limit=10,
-    int? offset=0,
-  }) => '''
-  query getNotifications{
-      getNotifications(limit: $limit, offset: $offset) {
-        count
-        unseenCounter
-    }
-    }
-  ''';
-
   static String getSelf() => '''{
   getSelf{
     id
@@ -106,4 +94,29 @@ class GraphQLQueries {
         deviceId: \$deviceId
     )
 } ''';
+
+  static String clearNotificationCounter() => '''    
+  query clearNotificationCounter{
+     clearNotificationCounter
+  }
+  ''';
+
+  static String notificationCounter() => '''    
+   query notificationCounter{
+     notificationCounter
+   }
+  ''';
+
+
+  static String makeNotificationSeen() => '''    
+   query notificationSeen(\$id : Float!){
+     notificationSeen(id :\$id)
+   }
+  ''';
+
+  static String markAllNotificationsAsRead() => '''    
+  query markAllAsRead{
+     markAllAsRead
+  }
+  ''';
 }

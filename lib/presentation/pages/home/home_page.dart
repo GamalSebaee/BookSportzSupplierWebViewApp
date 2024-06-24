@@ -7,6 +7,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
 
+import '../../../booksportz_app.dart';
 import '../../../commons/app_queued_tasks.dart';
 import '../../../commons/colors.dart';
 import '../../../commons/images.dart';
@@ -32,7 +33,8 @@ class _HomePageState extends State<HomePage> {
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
       Provider.of<NotificationsProvider>(context, listen: false)
           .getUnreadNotificationsCount();
-      Provider.of<DeviceInfoNotifier>(context, listen: false).submitDeviceToken();
+      Provider.of<DeviceInfoNotifier>(context, listen: false)
+          .submitDeviceToken();
       AppQueuedTasks.handleBackgroundNotificationAction();
     });
   }
@@ -66,6 +68,8 @@ class _HomePageState extends State<HomePage> {
                           onTap: () {
                             openPageWithName(
                                 context, Routes.notificationScreen);
+                            Provider.of<NotificationsProvider>(context, listen: false)
+                                .clearNotificationCounter();
                           },
                           child: Stack(
                             children: [
@@ -108,11 +112,11 @@ class _HomePageState extends State<HomePage> {
                 slivers: [
                   SliverList.list(
                     children: const [
-                      /* Padding(
+                      /*  Padding(
                           padding: const EdgeInsets.symmetric(vertical: 10,horizontal: 20),
-                          child: Text('${AppLocalizations.of(context)?.mainMenu}',
+                          child: Text("Notification Data :${Constants.notificationData}",
                           style: const TextStyle(
-                            fontSize: 20,
+                            fontSize: 15,
                             fontWeight: FontWeight.w500
                           ),),
                         ),*/
@@ -166,6 +170,9 @@ class _HomePageState extends State<HomePage> {
                 width: double.infinity,
               ),
               ListTile(
+                onTap: () {
+                  BookSportzApp.setLocale(context, const Locale("ar"));
+                },
                 leading: SvgPicture.asset(
                   Images.changeLanguage,
                   colorFilter: const ColorFilter.mode(
@@ -186,10 +193,13 @@ class _HomePageState extends State<HomePage> {
                 title: Text('${AppLocalizations.of(context)?.about}'),
               ),
               ListTile(
-                onTap: (){
-                  Provider.of<DeviceInfoNotifier>(context, listen: false).submitDeviceToken();
-                  Provider.of<UserAuthProvider>(context,listen: false).logout();
-                  openPageWithName(context, Routes.signInPage, closeBefore: true);
+                onTap: () {
+                  Provider.of<DeviceInfoNotifier>(context, listen: false)
+                      .deleteDeviceToken();
+                  Provider.of<UserAuthProvider>(context, listen: false)
+                      .logout();
+                  openPageWithName(context, Routes.signInPage,
+                      closeBefore: true);
                 },
                 leading: SvgPicture.asset(
                   Images.menuIconLogout,

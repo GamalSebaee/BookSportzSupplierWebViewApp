@@ -50,8 +50,8 @@ class _SignInPageState extends State<SignInPage> {
   void initState() {
     super.initState();
     Firebase.initializeApp();
-/*    emailController.text="gopaya5310@usoplay.com";
-    passwordController.text="Dht123457";*/
+    emailController.text="propadel@gmail.com";
+    passwordController.text="Propadel@123";
     emailController.addListener(() {
       userEmail = emailController.text;
       checkEmptyForm();

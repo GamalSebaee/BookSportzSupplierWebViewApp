@@ -5,6 +5,8 @@ class Constants {
   static const String englishLanguageCode = "en";
   static const String arabicLanguageCode = "ar";
 
+  static dynamic notificationData;
+
   static const BackendEnv _currentBackendEnv = BackendEnv.live;
   static String base = (_currentBackendEnv == BackendEnv.live)
       ? "https://www.backend.booksportz.com/"

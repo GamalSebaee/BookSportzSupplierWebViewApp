@@ -1,10 +1,8 @@
 import 'package:booksportz_supplier_webview_app/commons/app_firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:webview_cookie_manager/webview_cookie_manager.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 import '../../../commons/ui_utils.dart';
-import '../../../data/beans/pages_stack.dart';
 import '../../providers/device_info_notifier.dart';
 import '../../providers/user_auth_provider.dart';
 
@@ -57,31 +55,39 @@ class _AppWebPageState extends State<AppWebPage> {
       })
       ..setNavigationDelegate(
         NavigationDelegate(
-            onProgress: (int progress) {
-              // Update loading bar.
-            },
-            onPageFinished: (String url) {
-              printLog("onPageFinished url is : $url");
-              _isLoading = false;
-              setState(() {});
-            },
-            onUrlChange: (UrlChange urlChange) {
-              printLog("urlChange : ${urlChange.url}");
-            },
-          onNavigationRequest: (NavigationRequest request){
-            printLog("request.url ${request.url}");
+          onProgress: (int progress) {
+            // Update loading bar.
+          },
+          onPageFinished: (String url) {
+            printLog("onPageFinished url is : $url");
+            _isLoading = false;
+            setState(() {});
+          },
+          onUrlChange: (UrlChange urlChange) {
+            printLog("urlChange : ${urlChange.url}");
+          },
+          onNavigationRequest: (NavigationRequest request) {
+            printLog("request.url onNavigationRequest ${request.url}");
             if (request.url.contains("tel:") == true) {
-              String phoneNumber=request.url.replaceAll("tel:","");
-              if(phoneNumber.isNotEmpty){
-                launchPhoneNumber( phone: phoneNumber
-                );
+              String phoneNumber = request.url.replaceAll("tel:", "");
+              if (phoneNumber.isNotEmpty) {
+                launchPhoneNumber(phone: phoneNumber);
+              }
+              return NavigationDecision.prevent;
+            } else if (request.url.contains("whatsapp") == true) {
+              var queryParameters = Uri.parse(request.url).queryParameters;
+              var textMsg = queryParameters['text'];
+              var phoneNumber =queryParameters['phone'] ?? '';
+
+              if (phoneNumber.isNotEmpty) {
+                launchWhatsApp(phone: phoneNumber, msg: textMsg);
               }
               return NavigationDecision.prevent;
             }
             return NavigationDecision.navigate;
           },
-            onWebResourceError: (WebResourceError error) {},
-            ),
+          onWebResourceError: (WebResourceError error) {},
+        ),
       )
       ..loadRequest(Uri.parse(getPageUrlWithQueryParameters(_currentPageUrl ??
           'http://www.stgdashboard.booksportz.com') /*_currentPageUrl ?? ''*/));

@@ -66,6 +66,11 @@ class AppQueuedTasks {
   }
 
   static void handleBackgroundNotificationAction() {
+    if(firebaseNotificationModel == null){
+      updateBadgeCount(
+          count: 0
+      );
+    }
     WidgetsBinding.instance.addPostFrameCallback((_) async {
       if ((firebaseNotificationModel?.redirect ?? '').trim().isEmpty) {
         return;

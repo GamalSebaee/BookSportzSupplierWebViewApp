@@ -60,6 +60,12 @@ Future<void> launchPhoneNumber({required String phone}) async {
     printLog("Couldn't load url $phone");
   }
 }
+Future<void> launchWhatsApp({required String phone,String? msg}) async {
+  if (!await launchUrl(Uri.parse("whatsapp://send?phone=$phone"
+  "&text=${Uri.encodeComponent(msg ?? "")}"))){
+    printLog("Couldn't load url $phone");
+  }
+}
 
 Widget addVerticalSpace(double space){
   return SizedBox(
@@ -220,3 +226,4 @@ void showAppMessage(String? message) async {
     duration: Duration(seconds: 2),
   ).show(context);*/
 }
+

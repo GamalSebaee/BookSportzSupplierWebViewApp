@@ -18,7 +18,7 @@ class HomeMenuNotifier extends ChangeNotifier {
             pageUrl: "/catalog",
             image: Images.menuIconCatalog),*/
         HomeMenuItem(
-            title: "Items Control",
+            title: "Bookings control",
             pageUrl: "/itemsControl",
             image: Images.menuIconCatalog),
         HomeMenuItem(

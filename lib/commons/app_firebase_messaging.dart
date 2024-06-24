@@ -1,11 +1,16 @@
+import 'dart:convert';
+
 import 'package:booksportz_supplier_webview_app/commons/routes.dart';
 import 'package:booksportz_supplier_webview_app/commons/ui_utils.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_app_badger/flutter_app_badger.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:provider/provider.dart';
 
 import '../booksportz_app.dart';
+import '../presentation/providers/notifications_provider.dart';
 import 'constants.dart';
 
 const String notificationsChannelId = "booksportz_supplier_app_channel";
@@ -27,6 +32,7 @@ AndroidNotificationDetails createAndroidChannel({
     importance: Importance.max,
     priority: Priority.high,
     playSound: true,
+    channelShowBadge: false,
     icon: iconPath,
     largeIcon: hasPicture
         ? FilePathAndroidBitmap(
@@ -123,7 +129,7 @@ void initFirebaseMessaging() async {
     RemoteNotification? notification = message?.notification;
     AndroidNotification? androidNotification = message?.notification?.android;
     AppleNotification? appleNotification = message?.notification?.apple;
-    printLog("Inside push notification");
+    printLog("Inside push notification ${message?.data}");
     FirebaseNotificationModel? firebaseNotificationModel =
         await parseFirebaseRemoteMessage(message);
     if (notification != null) {
@@ -168,44 +174,62 @@ void handleLocalNotification(
   await flutterLocalNotificationsPlugin.initialize(initializationSettings,
       onDidReceiveNotificationResponse: (data) =>
           onDidReceiveNotificationResponse(data, firebaseNotificationModel));
-  var notId= createNotificationId();
+  var notId = createNotificationId();
   try {
     flutterLocalNotificationsPlugin.show(
-        notId,
-      notificationTitle,
-      notificationBody,
-      platformChannelSpecifics
-    );
+        notId, notificationTitle, notificationBody, platformChannelSpecifics);
   } catch (e) {
     printLog("inside handleLocalNotification: $e");
+  }
+
+  refreshNotificationsCounter();
+}
+
+void refreshNotificationsCounter() {
+  try {
+    printLog("Inside refreshNotificationsCounter");
+    BuildContext? context = BookSportzApp.navigatorKey.currentContext ??
+        BookSportzApp.navigatorKey.currentState?.context;
+    printLog("Inside refreshNotificationsCounter $context");
+    if (context != null) {
+      Future.delayed(Duration.zero).then((_) {
+        Provider.of<NotificationsProvider>(context, listen: false)
+            .updateNotificationsCount(count: 1);
+      });
+    }
+  } catch (e) {
+    printLog("refreshNotificationsCounter exception $e");
   }
 }
 
 void onDidReceiveNotificationResponse(NotificationResponse details,
     FirebaseNotificationModel? firebaseNotificationModel) {
   try {
-    printLog("handel notification action");
+    printLog(
+        "handel notification action : ${firebaseNotificationModel?.redirect}");
     _handelNotificationAction(firebaseNotificationModel);
   } catch (e) {
     printLog("onDidReceiveNotificationResponse fail $e");
   }
 }
 
-void _handelNotificationAction(FirebaseNotificationModel? firebaseNotificationModel){
-  if((firebaseNotificationModel?.redirect ?? '').trim().isEmpty){
+void _handelNotificationAction(
+    FirebaseNotificationModel? firebaseNotificationModel) {
+  if ((firebaseNotificationModel?.redirect ?? '').trim().isEmpty) {
     return;
   }
-  BuildContext? context=BookSportzApp.navigatorKey.currentContext ??
+  BuildContext? context = BookSportzApp.navigatorKey.currentContext ??
       BookSportzApp.navigatorKey.currentState?.context;
-  if ( context != null) {
+  if (context != null) {
     openPageWithName(context, Routes.appWebPage, args: {
-      RouteParameter.data: getPageUrl(
-          pageUrl: firebaseNotificationModel?.redirect ?? ''),
-      RouteParameter.title: '${AppLocalizations
-          .of(context)
-          ?.reservationDetails}'
+      RouteParameter.data:
+          getPageUrl(pageUrl: firebaseNotificationModel?.redirect ?? ''),
+      RouteParameter.title:
+          '${AppLocalizations.of(context)?.reservationDetails}'
     });
   }
+
+  updateBadgeCount(count: 0);
 }
 
 void printLog(String s) {
@@ -216,14 +240,23 @@ class FirebaseNotificationModel {
   dynamic type;
   String? redirect;
 
-  FirebaseNotificationModel({this.type,this.redirect});
+  FirebaseNotificationModel({this.type, this.redirect});
 
   FirebaseNotificationModel.fromJson(Map<String, dynamic>? json) {
-    type = json?['type'];
-    if(json?['redirect'] != null){
-      redirect = json?['redirect'];
-    }else if(json?['redirect_url'] != null){
-      redirect = json?['redirect_url'];
+    Constants.notificationData = json;
+    try {
+      type = json?['type'];
+      if (json?['redirect'] != null) {
+        redirect = json?['redirect'];
+      } else if (json?['notification'] != null) {
+        var obj =
+            PushNotificationModel.fromJson(jsonDecode(json?['notification']));
+        redirect = obj.redirect;
+      } else if (json?['redirect_url'] != null) {
+        redirect = json?['redirect_url'];
+      }
+    } catch (e) {
+      debugPrint("Notification parsing exception$e");
     }
   }
 }
@@ -239,4 +272,30 @@ int createNotificationId() {
       DateTime.now().millisecond.toInt() +
       DateTime.now().second.toInt());
   return notificationId;
+}
+
+class PushNotificationModel {
+  String? redirect;
+
+  PushNotificationModel({this.redirect});
+
+  PushNotificationModel.fromJson(Map<String, dynamic> json) {
+    redirect = json['redirect'];
+  }
+}
+
+void updateBadgeCount({int count = 0}) async {
+  if(count == 0){
+    await FlutterLocalNotificationsPlugin().cancelAll();
+  }
+  bool isSupported = await FlutterAppBadger.isAppBadgeSupported();
+  if (!isSupported) {
+    return;
+  }
+  if (count == 0) {
+    FlutterAppBadger.removeBadge();
+    //return;
+  }
+  FlutterAppBadger.updateBadgeCount(count);
+
 }

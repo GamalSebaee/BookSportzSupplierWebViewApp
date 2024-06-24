@@ -15,7 +15,7 @@ class NotificationScreen extends StatefulWidget {
 }
 
 class _NotificationScreenState extends State<NotificationScreen> {
-  static const _pageSize = 10;
+  static const _pageSize = 5;
 
   late final _notificationsProvider = context.read<NotificationsProvider>();
 
