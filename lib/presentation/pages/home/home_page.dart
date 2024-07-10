@@ -10,10 +10,12 @@ import 'package:provider/provider.dart';
 import '../../../booksportz_app.dart';
 import '../../../commons/app_queued_tasks.dart';
 import '../../../commons/colors.dart';
+import '../../../commons/constants.dart';
 import '../../../commons/images.dart';
 import '../../providers/device_info_notifier.dart';
 import '../../providers/notifications_provider.dart';
 import '../../providers/user_auth_provider.dart';
+import '../helper_screens/app_menu_web_page.dart';
 import 'widgets/user_info_widget.dart';
 
 class HomePage extends StatefulWidget {
@@ -68,7 +70,8 @@ class _HomePageState extends State<HomePage> {
                           onTap: () {
                             openPageWithName(
                                 context, Routes.notificationScreen);
-                            Provider.of<NotificationsProvider>(context, listen: false)
+                            Provider.of<NotificationsProvider>(context,
+                                    listen: false)
                                 .clearNotificationCounter();
                           },
                           child: Stack(
@@ -169,9 +172,9 @@ class _HomePageState extends State<HomePage> {
                 height: 1,
                 width: double.infinity,
               ),
-              ListTile(
+             /* ListTile(
                 onTap: () {
-                  BookSportzApp.setLocale(context, const Locale("ar"));
+                  BookSportzApp.setLocale(context, const Locale("en"));
                 },
                 leading: SvgPicture.asset(
                   Images.changeLanguage,
@@ -181,8 +184,11 @@ class _HomePageState extends State<HomePage> {
                   height: 25,
                 ),
                 title: Text('${AppLocalizations.of(context)?.changeLanguage}'),
-              ),
+              ),*/
               ListTile(
+                onTap: (){
+                  openAboutUsPage();
+                },
                 leading: SvgPicture.asset(
                   Images.aboutUs,
                   colorFilter: const ColorFilter.mode(
@@ -191,6 +197,45 @@ class _HomePageState extends State<HomePage> {
                   height: 25,
                 ),
                 title: Text('${AppLocalizations.of(context)?.about}'),
+              ),
+              ListTile(
+                onTap: (){
+                  openContactUsPage();
+                },
+                leading: SvgPicture.asset(
+                  Images.contactUsIcon,
+                  colorFilter: const ColorFilter.mode(
+                      ColorSet.COLOR_333333, BlendMode.srcIn),
+                  width: 25,
+                  height: 25,
+                ),
+                title: Text('${AppLocalizations.of(context)?.contactUs}'),
+              ),
+              ListTile(
+                onTap: (){
+                  openPrivacyPage();
+                },
+                leading: SvgPicture.asset(
+                  Images.privacyIcon,
+                  colorFilter: const ColorFilter.mode(
+                      ColorSet.COLOR_333333, BlendMode.srcIn),
+                  width: 25,
+                  height: 25,
+                ),
+                title: Text('${AppLocalizations.of(context)?.privacyPolicy}'),
+              ),
+              ListTile(
+                onTap: (){
+                  openTermsConditionsPage();
+                },
+                leading: SvgPicture.asset(
+                  Images.tCIcon,
+                  colorFilter: const ColorFilter.mode(
+                      ColorSet.COLOR_333333, BlendMode.srcIn),
+                  width: 25,
+                  height: 25,
+                ),
+                title: Text('${AppLocalizations.of(context)?.termsConditions}'),
               ),
               ListTile(
                 onTap: () {
@@ -218,5 +263,39 @@ class _HomePageState extends State<HomePage> {
         );
       },
     );
+  }
+
+  void openContactUsPage() {
+    openPageWithName(context, Routes.menuWebPage, args: {
+      RouteParameter.title: AppLocalizations.of(context)?.contactUs,
+      RouteParameter.data: WebViewPagesUrl.contactUs
+    });
+  }
+
+  void openPrivacyPage() {
+    openPageWithName(context, Routes.menuWebPage, args: {
+      RouteParameter.title: AppLocalizations.of(context)?.privacyPolicy,
+      RouteParameter.data: WebViewPagesUrl.privacyPolicy
+    });
+  }
+  void openAboutUsPage() {
+    openPageWithName(context, Routes.menuWebPage, args: {
+      RouteParameter.title: AppLocalizations.of(context)?.about,
+      RouteParameter.data: WebViewPagesUrl.aboutUs
+    });
+  }
+
+  void openTermsConditionsPage() {
+    openPageWithName(context, Routes.menuWebPage, args: {
+      RouteParameter.title: AppLocalizations.of(context)?.termsConditions,
+      RouteParameter.data: WebViewPagesUrl.termsConditions
+    });
+  }
+
+  void openHelpCenterPage() {
+    /*Navigator.of(NavigatorHelper.parentContext!).push(CupertinoPageRoute(
+        builder: (context) => HelpCenterScreen(
+              onBackPressed: () {},
+            )));*/
   }
 }

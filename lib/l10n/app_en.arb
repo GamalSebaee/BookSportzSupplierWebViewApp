@@ -55,5 +55,8 @@
   "changeLanguage": "Change Language",
   "about": "About",
   "markAllRead": "Mark all read",
-  "reservationDetails": "Reservation Details"
+  "reservationDetails": "Reservation Details",
+  "termsConditions": "Terms & Conditions",
+  "privacyPolicy": "Privacy Policy",
+  "contactUs": "Contact Us"
 }

@@ -12,6 +12,7 @@ import 'commons/localizations_utils.dart';
 import 'commons/routes.dart';
 import 'commons/storage_handler.dart';
 import 'commons/utils.dart';
+import 'presentation/pages/helper_screens/app_menu_web_page.dart';
 import 'presentation/pages/home/home_page.dart';
 import 'presentation/pages/notifications/notification_screen.dart';
 import 'presentation/pages/splash/splash.dart';
@@ -102,6 +103,13 @@ class _BookSportzAppState extends State<BookSportzApp> {
               builder: (context) => AppWebPage(
                 webPageUrl: parameters?[RouteParameter.data],
                 title: parameters?[RouteParameter.title],
+              ),
+            );
+          case Routes.menuWebPage:
+            return MaterialPageRoute(
+              builder: (context) => AppMenuWebPage(
+                pageUrl: parameters?[RouteParameter.data],
+                pageTitle: parameters?[RouteParameter.title],
               ),
             );
 

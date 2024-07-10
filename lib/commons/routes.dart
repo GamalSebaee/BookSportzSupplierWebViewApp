@@ -9,6 +9,7 @@ class Routes {
   static const notifications = '/notifications';
   static const profile = '/profile';
   static const notificationScreen = '/notificationScreen';
+  static const menuWebPage = '/menuWebPage';
 }
 
 typedef RouteParameters = Map<RouteParameter, dynamic>;

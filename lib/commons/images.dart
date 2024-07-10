@@ -27,6 +27,9 @@ class Images {
   static const aboutUs = 'assets/images/about-us.svg';
   static const profile = 'assets/images/profile.svg';
   static const emptyImage = 'assets/images/empty_image.png';
+  static const tCIcon = 'assets/images/terms-and-conditions-icon.svg';
+  static const privacyIcon = 'assets/images/privacy-icon.svg';
+  static const contactUsIcon = 'assets/images/contact-us-icon.svg';
 
 
 }

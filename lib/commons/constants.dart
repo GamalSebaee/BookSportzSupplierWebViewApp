@@ -24,3 +24,12 @@ String getPageUrl({required String pageUrl}) {
   }
   return "${Constants.dashboardBaseUrl}$pageUrl";
 }
+
+
+class WebViewPagesUrl {
+  static String aboutUs = "${Constants.base}info/aboutUs";
+  static String privacyPolicy = "${Constants.base}info/privacyPolicy";
+  static String contactUs = "${Constants.base}info/contactUs";
+  static String termsConditions = "${Constants.base}info/terms&conditions";
+  static String becomePartnerUrl = "https://www.booksportz.com/partner";
+}
